@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<!DOCTYPE input-forms SYSTEM "input-forms.dtd">
+
+
+<input-forms>
+
+ <!-- The form-map maps collection handles to forms. DSpace does not       -->
+ <!-- require a collection name to be unique, not even within a community. -->
+ <!-- DSpace does however ensure that each collection's handle is unique.  -->
+ <!-- Form-map provides the means to associate a unique collection name    -->
+ <!-- with a form. The form-map also provides the special handle "default" -->
+ <!-- (which is never a collection), here mapped to "traditional". Any     -->
+ <!-- collection which does not appear in this map will be associated with -->
+ <!-- the mapping for handle "default".                                    -->
+
+ <form-map>
+   <name-map collection-handle="default" form-name="traditional" />
+   <name-map collection-handle="11324/2401" form-name="orggob" />
+ </form-map>
+
+
+ <!-- The form-definitions map lays out the detailed definition of all the -->
+ <!-- submission forms. Each separate form set has a unique name as an     -->
+ <!-- attribute. This name matches one of the names in the form-map. One   -->
+ <!-- named form set has the name "traditional"; as this name suggests,    -->
+ <!-- it is the old style and is also the default, which gets used when    -->
+ <!-- the specified collection has no correspondingly-named form set.      -->
+ <!--                                                                      -->
+ <!-- Each form set contains an ordered set of pages; each page defines    -->
+ <!-- one submission metadata entry screen. Each page has an ordered list  -->
+ <!-- of field definitions, Each field definition corresponds to one       -->
+ <!-- metatdata entry (a so-called row), which has a DC element name, a    -->
+ <!-- displayed label, a text string prompt which is called a hint, and    -->
+ <!-- an input-type. Each field also may hold optional elements: DC        -->
+ <!-- qualifier name, a repeatable flag, and a text string whose presence  -->
+ <!-- serves as a 'this field is required' flag.                           -->
+
+ <form-definitions>
+
+   <form name="traditional">
+     <page number="1">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>author</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Autores</label>
+         <input-type>name</input-type>
+         <hint>Ingrese el nombre de los autores de este recurso de información.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>title</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Título</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el título principal del recurso de información.</hint>
+         <required>Debe ingresar el título principal del recurso de información.</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>title</dc-element>
+         <dc-qualifier>alternative</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Título alternativo</label>
+         <input-type>onebox</input-type>
+         <hint>Si el recurso de información tiene un título alternativo u otro idioma, ingréselo aquí.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>date</dc-element>
+         <dc-qualifier>issued</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Fecha de publicación</label>
+         <input-type>date</input-type>
+         <hint>Indique la fecha de publicación. Se puede dejar en blanco el día y/o meses si no aplica.</hint>         
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>publisher</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Editor</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el nombre del editor del recurso de información.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>identifier</dc-element>
+         <dc-qualifier>citation</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Referencia bibliográfica</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese la referencia bibliográfica del recurso de información.</hint>
+         <required></required>
+       </field>
+
+<!--   <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>ispartofseries</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Series/Report No.</label>
+         <input-type>series</input-type>
+         <hint>Enter the series and number assigned to this recurso de información by your community.</hint>
+         <required></required>
+       </field>       
+
+        <field>
+         <dc-schema>dcterms</dc-schema>
+         <dc-element>isPartOf</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Parte de (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento del cual es parte este recurso.</hint>
+         <required></required>
+       </field>   -->
+       
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>haspart</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Recurso incluye (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento que se incluye en este recurso.</hint>
+         <required></required>
+       </field>
+
+<!--        <field>
+         <dc-schema>dcterms</dc-schema>
+         <dc-element>hasPart</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Incluye (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento que se incluye en este recurso.</hint>
+         <required></required>
+       </field>       -->          
+       
+        <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>ispartof</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Recurso es parte de (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento del cual es parte este recurso.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>uri</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Ubicación URL</label>
+         <input-type>onebox</input-type>
+         <hint>Si el recurso de información, esta disponible en un sitio web, ingrese el URL aquí.</hint>         
+         <required></required>                            
+       </field>
+
+       
+      <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>identifier</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+         <repeatable>true</repeatable>
+         <label>Identificadores</label>
+         <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+         <hint>Si el recurso de información tiene un número de identificación (ISBN, ISSN), ingréselo aquí.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>type</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Tipo</label>
+         <input-type value-pairs-name="common_types">dropdown</input-type>
+         <hint>Seleccione el tipo(s) de recurso de información. Para seleccionar más de un valor en la lista, 
+mantener pulsada la tecla "Shift" o "CTRL".</hint>
+         <required></required>
+       </field>
+
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier>classification</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Clasificación de resoluciones</label>
+         <input-type value-pairs-name="common_subject_classification">dropdown</input-type>
+         <hint>Seleccione el tipo de resolución.</hint>
+         <required>Debe seleccionar el tipo de resolución.</required>
+         <type-bind>Resolución</type-bind>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>language</dc-element>
+         <dc-qualifier>iso</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Idioma</label>
+         <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+         <hint>Seleccione el idioma del recurso de información. Si el idioma no aparece en la lista, seleccione "Otro". Si el contenido no tiene un idioma (por ejemplo, si se trata de un conjunto de datos o una imagen), seleccione 'N/A'.</hint>
+         <required></required>
+       </field>
+     </page>
+
+     <page number="2">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <!-- An input-type of twobox MUST be marked as repeatable -->
+         <repeatable>true</repeatable>
+         <label>Palabras clave</label>
+         <input-type>twobox</input-type>
+         <hint>Ingrese las palabras claves. </hint>
+         <required></required>
+         <vocabulary>srsc</vocabulary>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier>other</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Representación</label>
+         <input-type value-pairs-name="common_subject_other">dropdown</input-type>
+         <hint>Seleccione la o las representación(es) a la que corresponde el recurso de información. Para seleccionar más de un valor en la lista, mantener pulsada la tecla "Shift" o "CTRL".</hint>
+         <required>Debe ingresar la Representación a la que corresponde el recurso de información.</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier>abstract</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Resumen</label>
+         <input-type>textarea</input-type>
+         <hint>Ingrese el resumen del recurso de información. </hint>
+         <required></required>
+       </field>
+      
+       <!-- 
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier>sponsorship</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Sponsors</label>
+         <input-type>textarea</input-type>
+         <hint>Enter the names of any sponsors and/or funding codes in the box. </hint>
+         <required></required>
+       </field>   -->
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Descripción</label>
+         <input-type>textarea</input-type>
+         <hint>Ingrese la descripción del recurso de información.</hint>
+         <required></required>
+       </field>
+     </page>
+   </form>
+
+   <form name="one">
+     <page number="1">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>author</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>One: Autores</label>
+         <input-type>name</input-type>
+         <hint>Ingrese los nombres de los autores de este recurso de información.</hint>
+         <required></required>
+       </field>
+      </page>
+    </form>
+
+
+
+
+
+
+
+   <form name="orggob">
+     <page number="1">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>author</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Autores</label>
+         <input-type>name</input-type>
+         <hint>OrgGob Ingrese el nombre de los autores de este recurso de información.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>title</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Título</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el título principal del recurso de información.</hint>
+         <required>Debe ingresar el título principal del recurso de información.</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>title</dc-element>
+         <dc-qualifier>alternative</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Título alternativo</label>
+         <input-type>onebox</input-type>
+         <hint>Si el recurso de información tiene un título alternativo u otro idioma, ingréselo aquí.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>date</dc-element>
+         <dc-qualifier>issued</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Fecha de publicación</label>
+         <input-type>date</input-type>
+         <hint>Indique la fecha de publicación. Se puede dejar en blanco el día y/o meses si no aplica.</hint>         
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>publisher</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Editor</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el nombre del editor del recurso de información.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>identifier</dc-element>
+         <dc-qualifier>citation</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Referencia bibliográfica</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese la referencia bibliográfica del recurso de información.</hint>
+         <required></required>
+       </field>
+
+
+
+
+<!--   <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>ispartofseries</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Series/Report No.</label>
+         <input-type>series</input-type>
+         <hint>Enter the series and number assigned to this recurso de información by your community.</hint>
+         <required></required>
+       </field>       
+
+        <field>
+         <dc-schema>dcterm</dc-schema>
+         <dc-element>isPartOf</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Parte de (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento del cual es parte este recurso.</hint>
+         <required></required>
+       </field>      -->   
+       
+        <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>haspart</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Recurso incluye (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento que se incluye en este recurso.</hint>
+         <required></required>
+       </field>
+
+<!--        <field>
+         <dc-schema>dcterms</dc-schema>
+         <dc-element>hasPart</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Incluye (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento que se incluye en este recurso.</hint>
+         <required></required>
+       </field>       -->          
+       
+        <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>ispartof</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Recurso es parte de (Titulo del documento)</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese el titulo del documento del cual es parte este recurso.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>relation</dc-element>
+         <dc-qualifier>uri</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Ubicación URL</label>
+         <input-type>onebox</input-type>
+         <hint>Si el recurso de información, esta disponible en un sitio web, ingrese el URL aquí.</hint>         
+         <required></required>                            
+       </field>
+
+
+
+
+
+
+
+       
+      <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>identifier</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+         <repeatable>true</repeatable>
+         <label>Identificadores</label>
+         <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+         <hint>Si el recurso de información tiene un número de identificación (ISBN, ISSN), ingréselo aquí.</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>type</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Tipo</label>
+         <input-type value-pairs-name="common_types">dropdown</input-type>
+         <hint>Seleccione el tipo(s) de recurso de información. Para seleccionar más de un valor en la lista, 
+mantener pulsada la tecla "Shift" o "CTRL".</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>language</dc-element>
+         <dc-qualifier>iso</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Idioma</label>
+         <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+         <hint>Seleccione el idioma del recurso de información. Si el idioma no aparece en la lista, seleccione "Otro". Si el contenido no tiene un idioma (por ejemplo, si se trata de un conjunto de datos o una imagen), seleccione 'N/A'.</hint>
+         <required></required>
+       </field>
+     </page>
+
+     <page number="2">
+     
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier>classification</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Clasificación de resoluciones</label>
+         <input-type value-pairs-name="common_subject_classification">dropdown</input-type>
+         <hint>Seleccione el tipo de resolución.</hint>
+         <required>Debe seleccionar el tipo de resolución.</required>
+         <type-bind>Resolución</type-bind>
+       </field> 
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>coverage</dc-element>
+         <dc-qualifier>spatial</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Ubicación</label>
+         <input-type>onebox</input-type>
+         <hint>Ingrese la ubicación de la reunión.</hint>
+         <required>Debe incluir el lugar donde se realizó la reunión.</required>
+         <type-bind>Reunión</type-bind>
+       </field>    
+     
+     
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <!-- An input-type of twobox MUST be marked as repeatable -->
+         <repeatable>true</repeatable>
+         <label>Palabras clave</label>
+         <input-type>twobox</input-type>
+         <hint>Ingrese las palabras claves. </hint>
+         <required></required>
+         <vocabulary>srsc</vocabulary>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>subject</dc-element>
+         <dc-qualifier>other</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Representación</label>
+         <input-type value-pairs-name="common_subject_other">dropdown</input-type>
+         <hint>Seleccione la o las representación(es) a la que corresponde el recurso de información. Para seleccionar más de un valor en la lista, mantener pulsada la tecla "Shift" o "CTRL".</hint>
+         <required>Debe ingresar la Representación a la que corresponde el recurso de información.</required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier>abstract</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Resumen</label>
+         <input-type>textarea</input-type>
+         <hint>Ingrese el resumen del recurso de información. </hint>
+         <required></required>
+       </field>
+      
+       <!-- 
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier>sponsorship</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Sponsors</label>
+         <input-type>textarea</input-type>
+         <hint>Enter the names of any sponsors and/or funding codes in the box. </hint>
+         <required></required>
+       </field>   -->
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier></dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Descripción</label>
+         <input-type>textarea</input-type>
+         <hint>Ingrese la descripción del recurso de información.</hint>
+         <required></required>
+       </field>
+     </page>
+   </form>
+
+   <form name="one">
+     <page number="1">
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>author</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>One: Autores</label>
+         <input-type>name</input-type>
+         <hint>Ingrese los nombres de los autores de este recurso de información.</hint>
+         <required></required>
+       </field>
+      </page>
+    </form>
+    
+    
+    
+ </form-definitions>
+
+
+
+
+
+
+
+
+
+
+
+ <!-- form-value-pairs populate dropdown and qualdrop-value lists.          -->
+ <!-- The form-value-pairs element holds child elements named 'value-pairs' -->
+ <!-- A 'value-pairs' element has a value-pairs-name and a dc-term          -->
+ <!-- attribute. The dc-term attribute specifies which to which Dublin Core -->
+ <!-- Term this set of value-pairs applies.                                 -->
+ <!--     Current dc-terms are: identifier-pairs, type-pairs, and           -->
+ <!--     language_iso-pairs. The name attribute matches a name             -->
+ <!--     in the form-map, above.                                           -->
+ <!-- A value-pair contains one 'pair' for each value displayed in the list -->
+ <!-- Each pair contains a 'displayed-value' element and a 'stored-value'   -->
+ <!-- element. A UI list displays the displayed-values, but the program     -->
+ <!-- stores the associated stored-values in the database.                  -->
+
+ <form-value-pairs>
+   <value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
+     <pair>
+       <displayed-value>ISBN</displayed-value>
+       <stored-value>isbn</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>ISSN</displayed-value>
+       <stored-value>issn</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Otro</displayed-value>
+       <stored-value>other</stored-value>
+     </pair>
+     <!--pair>
+       <displayed-value>ISMN</displayed-value>
+       <stored-value>ismn</stored-value>
+     </pair
+     <pair>
+       <displayed-value>Gov't Doc #</displayed-value>
+       <stored-value>govdoc</stored-value>
+     </pair
+     <pair>
+       <displayed-value>URI</displayed-value>
+       <stored-value>uri</stored-value>
+     </pair-->
+   </value-pairs>
+
+   <value-pairs value-pairs-name="common_types" dc-term="type">
+     <pair>
+       <displayed-value>Animación</displayed-value>
+       <stored-value>Animación</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Artículo</displayed-value>
+       <stored-value>Artículo</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Audio</displayed-value>
+       <stored-value>Audio</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Boletín</displayed-value>
+       <stored-value>Boletín</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Brochure</displayed-value>
+       <stored-value>Brochure</stored-value>
+     </pair> 
+     <pair>
+       <displayed-value>Capítulo del libro</displayed-value>
+       <stored-value>Capítulo del libro</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Consultoría</displayed-value>
+       <stored-value>Consultoría</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Documento de trabajo</displayed-value>
+       <stored-value>Documento de trabajo</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Estatuto</displayed-value>
+       <stored-value>Estatuto</stored-value>
+     </pair>          
+     <pair>
+       <displayed-value>Imagen</displayed-value>
+       <stored-value>Imagen</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Imagen, 3-D</displayed-value>
+       <stored-value>Imagen, 3-D</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Informe</displayed-value>
+       <stored-value>Informe</stored-value>
+     </pair>         
+     <pair>
+       <displayed-value>Libro</displayed-value>
+       <stored-value>Libro</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Mapa</displayed-value>
+       <stored-value>Mapa</stored-value>
+     </pair>
+     <!--pair>
+       <displayed-value>Musical Score</displayed-value>
+       <stored-value>Musical Score</stored-value>
+     </pair -->
+     <pair>
+       <displayed-value>Objetos de aprendizaje</displayed-value>
+       <stored-value>Objetos de aprendizaje</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Plan or proyecto</displayed-value>
+       <stored-value>Plan o proyecto</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Preimpreso</displayed-value>
+       <stored-value>Preimpreso</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Presentación</displayed-value>
+       <stored-value>Presentación</stored-value>
+     </pair>
+     <!-- pair>
+       <displayed-value>Recording, acoustical</displayed-value>
+       <stored-value>Recording, acoustical</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Recording, musical</displayed-value>
+       <stored-value>Recording, musical</stored-value>
+     </pair -->
+     <pair>
+       <displayed-value>Reglamento</displayed-value>
+       <stored-value>Reglamento</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Reporte técnico</displayed-value>
+       <stored-value>Reporte técnico</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Resolución</displayed-value>
+       <stored-value>Resolución</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Reunión</displayed-value>
+       <stored-value>Reunión</stored-value>
+     </pair>          
+     <pair>
+       <displayed-value>Set de datos</displayed-value>
+       <stored-value>Set de datos</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Software</displayed-value>
+       <stored-value>Software</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Tesis</displayed-value>
+       <stored-value>Tesis</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Video</displayed-value>
+       <stored-value>Video</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Otro</displayed-value>
+       <stored-value>Otro</stored-value>
+     </pair>
+   </value-pairs>
+
+   <!-- default language order: (from dspace 1.2.1)
+        "en", "es", "pt", "fr", "it", "ja", "zh", "other", ""
+     -->
+   <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
+     <pair>
+       <displayed-value>N/A</displayed-value>
+       <stored-value></stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Inglés</displayed-value>
+       <stored-value>en</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Español</displayed-value>
+       <stored-value>es</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Francés</displayed-value>
+       <stored-value>fr</stored-value>
+     </pair>     
+     <pair>
+       <displayed-value>Português</displayed-value>
+       <stored-value>pt</stored-value>
+     </pair>
+     <!-- pair>
+       <displayed-value>Italiano</displayed-value>
+       <stored-value>it</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Japonés</displayed-value>
+       <stored-value>ja</stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Chino</displayed-value>
+       <stored-value>zh</stored-value>
+     </pair>
+     < pair>
+       <displayed-value>Turkish</displayed-value>
+       <stored-value>tr</stored-value>
+     </pair -->
+     <pair>
+       <displayed-value>(Otro)</displayed-value>
+       <stored-value>other</stored-value>
+     </pair>
+   </value-pairs>
+
+   <value-pairs value-pairs-name="common_subject_classification" dc-term="subject_classification">
+     <pair><displayed-value>Asuntos de los Órganos de Gobierno</displayed-value><stored-value>Asuntos de los Órganos de Gobierno</stored-value></pair>
+     <pair><displayed-value>Asuntos de Presupuesto y Finanzas</displayed-value><stored-value>Asuntos de Presupuesto y Finanzas</stored-value></pair>
+     <pair><displayed-value>Asuntos Especiales</displayed-value><stored-value>Asuntos Especiales</stored-value></pair>     
+     <pair><displayed-value>Contribución de Organismos Internacionales</displayed-value><stored-value>Contribución de Organismos Internacionales</stored-value></pair> 
+     <pair><displayed-value>Normas, Procedimientos y otros Asuntos Administrativos</displayed-value><stored-value>Normas, Procedimientos y otros Asuntos Administrativos</stored-value></pair>
+     <pair><displayed-value>Política Institucional y Cooperación Técnica</displayed-value><stored-value>Política Institucional y Cooperación Técnica</stored-value></pair> 
+   
+<pair><displayed-value>----</displayed-value><stored-value></stored-value></pair>      
+     <pair><displayed-value>Matters pertaining to the Governing Bodies of IICA</displayed-value><stored-value>Matters pertaining to the Governing Bodies of IICA</stored-value></pair>
+     <pair><displayed-value>Budgetary and Financial Matters</displayed-value><stored-value>Budgetary and Financial Matters</stored-value></pair>
+     <pair><displayed-value>Special Matters</displayed-value><stored-value>Special Matters</stored-value></pair>     
+     <pair><displayed-value>The Contribution of International Organizations</displayed-value><stored-value>The Contribution of International Organizations</stored-value></pair> 
+     <pair><displayed-value>Rules and Procedures</displayed-value><stored-value>Rules and Procedures</stored-value></pair>
+     <pair><displayed-value>Institutional Policy and Cooperation Services</displayed-value><stored-value>Institutional Policy and Cooperation Services</stored-value></pair>    
+     
+<pair><displayed-value>----</displayed-value><stored-value></stored-value></pair>     
+     <pair><displayed-value>Questions des Organes de Direction</displayed-value><stored-value>Questions des Organes de Direction</stored-value></pair>
+     <pair><displayed-value>Questions Budgétaires et Financières</displayed-value><stored-value>Questions Budgétaires et Financières</stored-value></pair>
+     <pair><displayed-value>Autres points</displayed-value><stored-value>Autres points</stored-value></pair>     
+     <pair><displayed-value>Contribution des Organisations Internationales</displayed-value><stored-value>Contribution des Organisations Internationales</stored-value></pair> 
+     <pair><displayed-value>Rules, Procedures and Others Administrative Matters</displayed-value><stored-value>Rules, Procedures and Others Administrative Matters</stored-value></pair>
+     <pair><displayed-value>Politique Institutionnelle et Coopération Technique</displayed-value><stored-value>Politique Institutionnelle et Coopération Technique</stored-value></pair>
+
+<pair><displayed-value>----</displayed-value><stored-value></stored-value></pair>     
+     <pair><displayed-value>Assuntos dos Órgãos de Governo</displayed-value><stored-value>Assuntos dos Órgãos de Governo</stored-value></pair>
+     <pair><displayed-value>Assuntos Orçamentários e Financeiros</displayed-value><stored-value>Assuntos Orçamentários e Financeiros</stored-value></pair>
+     <pair><displayed-value>Outros temas</displayed-value><stored-value>Outros temas</stored-value></pair>     
+     <pair><displayed-value>Contribuição de Organismos Internacionais</displayed-value><stored-value>Contribucição de Organismos Internacionais</stored-value></pair> 
+     <pair><displayed-value>Normas, Procedimientos e Gestão Administrativa</displayed-value><stored-value>Normas, Procedimientos e Gestão Administrativa</stored-value></pair>
+     <pair><displayed-value>Política Institucional e Cooperação Técnica</displayed-value><stored-value>Política Institucional e Cooperação Técnica</stored-value></pair>        
+   </value-pairs>
+
+   <value-pairs value-pairs-name="common_subject_other" dc-term="subject_other">
+     <pair><displayed-value>Sede Central</displayed-value><stored-value>Sede Central</stored-value></pair>
+     <pair><displayed-value>Representación Antigua y Barbuda</displayed-value><stored-value>Representación Antigua y Barbuda</stored-value></pair>
+     <pair><displayed-value>Representación Argentina</displayed-value><stored-value>Representación Argentina</stored-value></pair>
+     <pair><displayed-value>Representación Bahamas</displayed-value><stored-value>Representación Bahamas</stored-value></pair>
+     <pair><displayed-value>Representación Barbados</displayed-value><stored-value>Representación Barbados</stored-value></pair>
+     <pair><displayed-value>Representación Belice</displayed-value><stored-value>Representación Belice</stored-value></pair>
+     <pair><displayed-value>Representación Bolivia</displayed-value><stored-value>Representación Bolivia</stored-value></pair>
+     <pair><displayed-value>Representación Brasil</displayed-value><stored-value>Representación Brasil</stored-value></pair>
+     <pair><displayed-value>Representación Canadá</displayed-value><stored-value>Representación Canadá</stored-value></pair>
+     <pair><displayed-value>Representación Chile</displayed-value><stored-value>Representación Chile</stored-value></pair>
+     <pair><displayed-value>Representación Colombia</displayed-value><stored-value>Representación Colombia</stored-value></pair>
+     <pair><displayed-value>Representación Costa Rica</displayed-value><stored-value>Representación Costa Rica</stored-value></pair>
+     <pair><displayed-value>Representación Dominica</displayed-value><stored-value>Representación Dominica</stored-value></pair>     
+     <pair><displayed-value>Representación Ecuador</displayed-value><stored-value>Representación Ecuador</stored-value></pair>
+     <pair><displayed-value>Representación El Salvador</displayed-value><stored-value>Representación El Salvador</stored-value></pair>
+     <pair><displayed-value>Representación España</displayed-value><stored-value>Representación España</stored-value></pair>
+     <pair><displayed-value>Representación Estados Unidos</displayed-value><stored-value>Representación Estados Unidos</stored-value></pair>
+     <pair><displayed-value>Representación Granada</displayed-value><stored-value>Representación Granada</stored-value></pair>
+     <pair><displayed-value>Representación Guatemala</displayed-value><stored-value>Representación Guatemala</stored-value></pair>
+     <pair><displayed-value>Representación Guyana</displayed-value><stored-value>Representación Guyana</stored-value></pair>
+     <pair><displayed-value>Representación Haití</displayed-value><stored-value>Representación Haití</stored-value></pair>
+     <pair><displayed-value>Representación Honduras</displayed-value><stored-value>Representación Honduras</stored-value></pair>
+     <pair><displayed-value>Representación Jamaica</displayed-value><stored-value>Representación Jamaica</stored-value></pair>
+     <pair><displayed-value>Representación México</displayed-value><stored-value>Representación México</stored-value></pair>
+     <pair><displayed-value>Representación Nicaragua</displayed-value><stored-value>Representación Nicaragua</stored-value></pair>
+     <pair><displayed-value>Representación Panamá</displayed-value><stored-value>Representación Panamá</stored-value></pair>
+     <pair><displayed-value>Representación Paraguay</displayed-value><stored-value>Representación Paraguay</stored-value></pair>     
+     <pair><displayed-value>Representación Perú</displayed-value><stored-value>Representación Perú</stored-value></pair>
+     <pair><displayed-value>Representación República Dominicana</displayed-value><stored-value>Representación República Dominicana</stored-value></pair>
+     <pair><displayed-value>Representación San Cristóbal y Nieves</displayed-value><stored-value>Representación San Cristóbal y Nieves</stored-value></pair>
+     <pair><displayed-value>Representación San Vicente y las Granadinas</displayed-value><stored-value>Representación San Vicente y las Granadinas</stored-value></pair>
+     <pair><displayed-value>Representación Santa Lucía</displayed-value><stored-value>Representación Santa Lucía</stored-value></pair>
+     <pair><displayed-value>Representación Surinam</displayed-value><stored-value>Representación Surinam</stored-value></pair>
+     <pair><displayed-value>Representación Trinidad y Tobago</displayed-value><stored-value>Representación Trinidad y Tobago</stored-value></pair>        
+     <pair><displayed-value>Representación Uruguay</displayed-value><stored-value>Representación Uruguay</stored-value></pair>
+     <pair><displayed-value>Representación Venezuela</displayed-value><stored-value>Representación Venezuela</stored-value></pair>
+   </value-pairs>
+
+ </form-value-pairs>
+
+</input-forms>
